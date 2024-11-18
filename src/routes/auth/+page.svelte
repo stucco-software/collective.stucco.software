@@ -1,0 +1,1 @@
+<h1>Neat auth ui page</h1>
