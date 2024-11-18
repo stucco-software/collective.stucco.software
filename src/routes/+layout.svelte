@@ -1,7 +1,5 @@
 <script type="text/javascript">
   export let data
-  console.log('layout data plz')
-  console.log(data)
 </script>
 
 <nav>
