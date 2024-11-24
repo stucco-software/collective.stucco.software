@@ -5,7 +5,7 @@
 <nav>
   <a href="/">home</a>
   {#if data.session}
-    {new URL(data.session.webId).origin}
+    <a href="/profile">{new URL(data.session.webId).origin}</a>
     <form
       action="/auth?/logout"
       method="POST">
