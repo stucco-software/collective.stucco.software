@@ -4,7 +4,6 @@ import { QueryEngine } from '@comunica/query-sparql-solid'
 import rdfkv from 'rdf-kv.js'
 
 const eng = new QueryEngine()
-let id = 'https://nkws.login.stucco.software/profile/card#me'
 
 export async function load({ params, locals, cookies }) {
   let start = new Date()
@@ -23,11 +22,12 @@ export async function load({ params, locals, cookies }) {
   last = now
   now = new Date()
   console.log('Hydrate Session', now - start, now - last)
+  console.log(session.info.webId)
   eng.invalidateHttpCache()
   const bindingsStream = await eng.queryBindings(`
     SELECT ?p ?o
     WHERE {
-      <${id}> ?p ?o
+      <${session.info.webId}> ?p ?o
     } LIMIT 100`, {
     sources: [session.info.webId],
     noCache: true,
@@ -71,7 +71,7 @@ export const actions = {
     last = now
     now = new Date()
     console.log('start rdf kv to triples', now - start, now - last)
-    const triples = rdfkv(id, FormBody)
+    const triples = rdfkv(session.info.webId, FormBody)
     last = now
     now = new Date()
     console.log('end rdf kv to triples', now - start, now - last)
@@ -79,7 +79,7 @@ export const actions = {
       PREFIX some:  <http://http://localhost:5173/>
       DELETE { ${triples.delete} }
       INSERT { ${triples.insert} }
-      WHERE  { <${id}> ?p ?o }`, {
+      WHERE  { <${session.info.webId}> ?p ?o }`, {
       sources: [session.info.webId],
       fetch: session.fetch,
     })
