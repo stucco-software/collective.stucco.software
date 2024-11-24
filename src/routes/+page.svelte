@@ -1,8 +1,8 @@
 <script type="text/javascript">
   // import { fetch } from '@inrupt/solid-client-authn-browser'
-  import { QueryEngine } from '@comunica/query-sparql-solid'
+  // import { QueryEngine } from '@comunica/query-sparql-solid'
 
-  const sparql = new QueryEngine()
+  // const sparql = new QueryEngine()
 
   export let data
 
