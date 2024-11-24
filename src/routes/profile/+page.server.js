@@ -59,6 +59,7 @@ export async function load({ params, locals, cookies }) {
 
 export const actions = {
   default: async ({locals, request}) => {
+    console.log(locals)
     let start = new Date()
     let now = new Date()
     let last = now

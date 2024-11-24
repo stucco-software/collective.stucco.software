@@ -12,7 +12,6 @@
   <dd>{data['http://http://localhost:5173/data']}</dd>
 </dl>
 
-
 <form
   action="/profile"
   method="POST">
